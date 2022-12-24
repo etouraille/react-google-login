@@ -2,12 +2,18 @@ import React, {useEffect} from "react";
 import {MouseEventHandler} from "react";
 import { CredentialResponse, PromptMomentNotification } from 'google-one-tap';
 
-const Login = ({ client_id , onSuccess}) => {
+export interface ButtonProps {
+    client_id: string;
+    onSuccess: (response: any) => void;
+    title: string;
+}
+
+const Login = (props: ButtonProps) => {
 
 
     const handleCredentialResponse = (response: CredentialResponse) => {
-        if(typeof onSuccess === 'function') {
-            onSuccess(response);
+        if(typeof props.onSuccess === 'function') {
+            props.onSuccess(response);
         }
     }
 
@@ -27,7 +33,7 @@ const Login = ({ client_id , onSuccess}) => {
         window.onGoogleLibraryLoad = () => {
             // @ts-ignore
             google.accounts.id.initialize({
-                client_id: client_id,
+                client_id: props.client_id,
                 callback:  handleCredentialResponse.bind(this), // Whatever function you want to trigger...
                 auto_select: true,
                 cancel_on_tap_outside: false,
@@ -47,7 +53,7 @@ const Login = ({ client_id , onSuccess}) => {
     }, [client_id]);
 
     return (
-        <button className="btn" onClick={signin}></button>
+        <button className="btn" onClick={signin}>{title}</button>
     )
 }
 export default Login;
