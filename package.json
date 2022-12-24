@@ -1,0 +1,42 @@
+{
+  "name": "@etouraille/react-ggogle-login",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/etouraille"
+  },
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "rollup": "rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/etouraille/react-google-login.git"
+  },
+  "author": "Edoaurd Touraille",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/etouraille/react-google-login/issues"
+  },
+  "homepage": "https://github.com/etouraille/react-google-login#readme",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^24.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-typescript": "^10.0.1",
+    "@types/react": "^18.0.26",
+    "react": "^18.2.0",
+    "rollup": "^3.8.1",
+    "rollup-plugin-dts": "^5.1.0",
+    "typescript": "^4.9.4"
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "@types/google-one-tap": "^1.2.2",
+    "google-one-tap": "^1.0.6",
+    "tslib": "^2.4.1"
+  }
+}
