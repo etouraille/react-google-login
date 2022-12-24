@@ -50,10 +50,10 @@ const Login = (props: ButtonProps) => {
             fjs?.parentNode?.insertBefore(js, fjs);
         }(document, 'script', 'google-jssdk'));
 
-    }, [client_id]);
+    }, [props.client_id]);
 
     return (
-        <button className="btn" onClick={signin}>{title}</button>
+        <button className="btn" onClick={signin}>{props.title}</button>
     )
 }
 export default Login;

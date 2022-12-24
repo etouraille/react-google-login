@@ -1,9 +1,9 @@
 {
-  "name": "@etouraille/react-ggogle-login",
+  "name": "@etouraille/react-google-login",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/etouraille"
   },
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "scripts": {
     "rollup": "rollup -c"
