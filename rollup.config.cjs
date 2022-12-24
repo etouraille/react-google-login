@@ -2,6 +2,8 @@ const resolve  = require("@rollup/plugin-node-resolve");
 const commonjs = require("@rollup/plugin-commonjs");
 const typescript = require( "@rollup/plugin-typescript");
 const {default:dts} = require("rollup-plugin-dts");
+const peerDepsExternal = require('rollup-plugin-peer-deps-external');
+
 
 console.log(dts);
 
@@ -26,6 +28,7 @@ module.exports = [
             resolve(),
             commonjs(),
             typescript({ tsconfig: "./tsconfig.json" }),
+            peerDepsExternal(),
         ],
     },
     {
