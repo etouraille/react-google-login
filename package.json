@@ -1,8 +1,5 @@
 {
   "name": "@etouraille/react-google-login",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/etouraille"
-  },
   "version": "1.0.6",
   "description": "",
   "scripts": {
