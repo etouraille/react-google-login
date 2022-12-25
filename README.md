@@ -11,7 +11,7 @@ npm install --save @etouraille/react-google-login
   
   return (
     <div>
-      <Login client_id={client_id} title="Hello Google" onSuccess={onSuccess} />
+      <Login client_id={client_id} onSuccess={onSuccess} />
     </div>
   )
 ```
