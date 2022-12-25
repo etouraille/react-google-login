@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {MouseEventHandler} from "react";
 import { CredentialResponse, PromptMomentNotification } from 'google-one-tap';
 
@@ -10,6 +10,7 @@ export interface ButtonProps {
 
 const Login = (props: ButtonProps) => {
 
+    const [loaded, setLoaded] = useState(false);
 
     const handleCredentialResponse = (response: CredentialResponse) => {
         if(typeof props.onSuccess === 'function') {
@@ -31,6 +32,8 @@ const Login = (props: ButtonProps) => {
 
         // @ts-ignore
         window.onGoogleLibraryLoad = () => {
+
+
             // @ts-ignore
             google.accounts.id.initialize({
                 client_id: props.client_id,
@@ -38,6 +41,16 @@ const Login = (props: ButtonProps) => {
                 auto_select: true,
                 cancel_on_tap_outside: false,
             });
+            let googleLoginDiv = document.getElementById('g_id_signin');
+            setLoaded(true);
+            // @ts-ignore
+            google.accounts.id.renderButton(googleLoginDiv, {
+                type: "standard",
+                theme: "outline",
+                size: "large"
+            });
+
+
         };
 
 
@@ -50,10 +63,16 @@ const Login = (props: ButtonProps) => {
             fjs?.parentNode?.insertBefore(js, fjs);
         }(document, 'script', 'google-jssdk'));
 
-    }, [props.client_id]);
+    }, [props.client_id, loaded]);
 
     return (
-        <button className="btn" onClick={signin}>{props.title}</button>
+        <>
+            <div
+                id="g_id_signin"
+                    onClick={signin}
+            >
+            </div>
+        </>
     )
 }
 export default Login;
