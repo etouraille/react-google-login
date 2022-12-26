@@ -4,8 +4,10 @@ import { CredentialResponse, PromptMomentNotification } from 'google-one-tap';
 
 export interface ButtonProps {
     client_id: string;
-    onSuccess: (response: any) => void;
-    title: string;
+    onSuccess?: (response: any) => void;
+    onFailure?: (response: any) => void;
+    onReturn?: (response: any) => void;
+    content?: (data: any) => React.ReactNode;
 }
 
 const Login = (props: ButtonProps) => {
@@ -22,9 +24,13 @@ const Login = (props: ButtonProps) => {
 
         // @ts-ignore
         google.accounts.id.prompt((notification: PromptMomentNotification) => {
-                console.log(notification);
+                if (notification.getDismissedReason() === 'credential_returned') {
+                    props.onReturn && props.onReturn(notification);
+                }
+                if (notification.isNotDisplayed()) {
+                    props.onFailure && props.onFailure(notification);
+                }
         });
-
     }
 
 
@@ -43,14 +49,14 @@ const Login = (props: ButtonProps) => {
             });
             let googleLoginDiv = document.getElementById('g_id_signin');
             setLoaded(true);
-            // @ts-ignore
-            google.accounts.id.renderButton(googleLoginDiv, {
-                type: "standard",
-                theme: "outline",
-                size: "large"
-            });
-
-
+            if(!props.content) {
+                // @ts-ignore
+                google.accounts.id.renderButton(googleLoginDiv, {
+                    type: "standard",
+                    theme: "outline",
+                    size: "large"
+                });
+            }
         };
 
 
@@ -67,11 +73,7 @@ const Login = (props: ButtonProps) => {
 
     return (
         <>
-            <div
-                id="g_id_signin"
-                    onClick={signin}
-            >
-            </div>
+            { props.content ? props.content(signin) : <div id="g_id_signin" onClick={signin}></div> }
         </>
     )
 }
