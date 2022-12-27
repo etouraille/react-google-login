@@ -19,7 +19,7 @@ const Log   = (props: LogProps) => {
     }
 
     useEffect(() => {
-        console.log('in here', props.trigger);
+
         if(props.trigger) {
             // @ts-ignore
             google.accounts.id.prompt((notification: PromptMomentNotification) => {
@@ -34,7 +34,6 @@ const Log   = (props: LogProps) => {
     }, [props.trigger]);
 
     useEffect(() => {
-        console.log('in there', props.trigger);
 
 
             // @ts-ignore

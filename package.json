@@ -1,6 +1,6 @@
 {
   "name": "@etouraille/react-google-login",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "",
   "scripts": {
     "rollup": "rollup -c"
