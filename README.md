@@ -1,7 +1,7 @@
-Plugin to enable google login with the new google api
-```shell
+# Plugin to enable google login with the new google api
+## Install
+```bash
 npm install --save @etouraille/react-google-login
-  
 ```
 ## Usage
 ```javascript
