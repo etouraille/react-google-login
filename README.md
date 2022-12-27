@@ -14,6 +14,7 @@ npm install --save @etouraille/react-google-login
       <Login 
           client_id={client_id} 
           onSuccess={onSuccess} 
+          onFailure={onFailure}
       />
     </div>
   )
@@ -31,7 +32,9 @@ npm install --save @etouraille/react-google-login
       <Login 
           content={(login) => <button onClick={login}>My button</button>}
           client_id={client_id} 
-          onSuccess={onSuccess}>
+          onSuccess={onSuccess}
+          onFailure={onFailure}
+      >
       </Login>
     </div>
   )
@@ -50,7 +53,9 @@ npm install --save @etouraille/react-google-login
       <UnlogGoogle 
           content={( logout) => <button onClick={logout}>Logout</button>} 
           client_id={client_id} 
-          onSuccess={onSuccess}>
+          onSuccess={onSuccess}
+          onFailure={onFailure}
+      >
       </UnlogGoogle>
     </div>
   )
