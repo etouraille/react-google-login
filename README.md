@@ -7,9 +7,14 @@ npm install --save @etouraille/react-google-login
 ```javascript
   import { Login } from '@etouraille/react-google-login'
   
+
+
   return (
     <div>
-      <Login client_id={client_id} onSuccess={onSuccess} />
+      <Login 
+          client_id={client_id} 
+          onSuccess={onSuccess} 
+      />
     </div>
   )
 ```
@@ -23,8 +28,10 @@ npm install --save @etouraille/react-google-login
   
   return (
     <div>
-      <Login content={(login) => <button onClick={login}>My button</button>}client_id={client_id} onSuccess={onSuccess}>
-        
+      <Login 
+          content={(login) => <button onClick={login}>My button</button>}
+          client_id={client_id} 
+          onSuccess={onSuccess}>
       </Login>
     </div>
   )
